@@ -2,4 +2,4 @@
 
 ## Описание
 
-![alt text](fix.jpeg)
+![alt text](fix.jpg)
