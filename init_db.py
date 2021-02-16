@@ -1,4 +1,33 @@
 import sqlite3
+from sqlalchemy import Column, ForeignKey, Integer, String, Float, Date
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
+from sqlalchemy import create_engine
+ 
+Base = declarative_base()
+ 
+class CompanyDB(Base):
+    __tablename__ = 'company'
+
+    company_id = Column(Integer, primary_key=True)
+    full_name = Column(String(100), nullable=True)
+    ticker = Column(String(20), nullable=False)
+    sector = Column(String(50), nullable=True)
+    summary = Column(String(1000), nullable=True)
+ 
+class PriceDB(Base):
+    __tablename__ = 'price'
+
+    price_id = Column(Integer, primary_key=True)
+    company_id = Column(Integer, ForeignKey('company.company_id'))
+    open_price = Column(Float)
+    close_price = Column(Float)
+    high_price = Column(Float)
+    low_price = Column(Float)
+    volume = Column(Float)
+    price_day = Column(Date, nullable=False)
+
+ 
 
 
 def insert_to_price(company, connection, cursor):
@@ -28,35 +57,5 @@ def insert_to_company(company, connection, cursor):
     connection.commit()
 
 if __name__ == "__main__":
-    connection = sqlite3.connect('data.db')
-    cursor = connection.cursor()
-
-    create_table = """
-    CREATE TABLE company ( 
-        company_id INTEGER PRIMARY KEY,
-        full_name TEXT, 
-        ticker TEXT,
-        sector TEXT,
-        website TEXT,
-        summary TEXT
-    )
-    """
-    cursor.execute(create_table)
-    connection.commit()
-
-    create_table = """
-    CREATE TABLE price (
-        price_id INTEGER PRIMARY KEY,
-        company_id INTEGER,
-        open REAL,
-        close REAL,
-        high REAL,
-        low REAL,
-        volume REAL,
-        price_day INTEGER
-    )
-    """
-    cursor.execute(create_table)
-    connection.commit()
-
-    connection.close()
+    engine = create_engine('sqlite:///sqlalchemy_example.db')
+    Base.metadata.create_all(engine)

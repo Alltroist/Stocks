@@ -52,7 +52,7 @@ class Company:
                 self.summary = profile.get('longBusinessSummary')
             #self.founder = result['quoteSummary']['result'][0]['assetProfile']['companyOfficers']
 
-    def get_price(self, start=0, end=99999999999, interval="1d"):
+    def get_price(self, start=0, end=9999999999, interval="1d"):
         if not self.error:
             result = requests.get(
                 f"https://query1.finance.yahoo.com/v8/finance/" \
