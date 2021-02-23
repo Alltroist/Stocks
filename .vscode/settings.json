@@ -1,5 +1,4 @@
 {
-    "python.pythonPath": "c:\\Users\\user\\Anaconda3\\envs\\stocks\\python.exe",
     "sqltools.connections": [
         {
             "previewLimit": 100,
