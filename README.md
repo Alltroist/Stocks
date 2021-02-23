@@ -2,4 +2,4 @@
 
 ## Описание
 
-![alt text](logo.jpg)
+![alt text](stocks/static/img/fix.jpg)

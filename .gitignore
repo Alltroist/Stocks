@@ -1,0 +1,4 @@
+__pycache__/
+.vscode/
+stocks/models/__pycache__/
+stocks/__pycache__/
