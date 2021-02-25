@@ -12,10 +12,9 @@ from datetime import datetime
 
 from tqdm import tqdm
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from models.company import CompanyModel
+from models.price import PriceModel
 
-from init_db import CompanyDB, PriceDB
 
 
 Price = namedtuple("Price", 
@@ -103,7 +102,7 @@ class Company:
                 ]
 
     def insert_company(self, session):
-        company = CompanyDB(self.full_name, self.ticker, self.sector, self.summary)
+        company = CompanyModel(self.full_name, self.ticker, self.sector, self.summary)
         session.add(company)
         session.flush()
         self.company_id = company.company_id

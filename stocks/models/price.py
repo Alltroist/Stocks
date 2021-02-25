@@ -30,6 +30,6 @@ class PriceModel(db.Model):
         self.price_day = price_day
 
     def __repr__(self):
-        return f"<PriceDB({self.company_id}, {self.open_price}, " \
+        return f"<PriceModel({self.company_id}, {self.open_price}, " \
             f"{self.close_price}, {self.high_price}, {self.low_price}, " \
             f"{self.volume}, {self.price_day})>"

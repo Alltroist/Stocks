@@ -22,7 +22,7 @@ class CompanyModel(db.Model):
         self.summary = summary 
 
     def __repr__(self):
-        return f"<CompanyDB({self.full_name}, {self.ticker}, " \
+        return f"<CompanyModel({self.full_name}, {self.ticker}, " \
             f"{self.sector}, {self.summary})>"
 
     
